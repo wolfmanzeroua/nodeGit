@@ -68,7 +68,7 @@ mainDb.once('open', function callback() {
 
     server.listen(process.env.PORT, function () {
         console.log('Server up successfully - host: ' + process.env.HOST + ' port: ' + process.env.PORT);
-        require('child_process').exec('npm restart');
+        //require('child_process').exec('npm restart');
     });
 });
 
