@@ -26,11 +26,12 @@ module.exports = function(app, db){
         require('simple-git')()
             .pull(function(err, update) {
                 if(update && update.summary.changes) {
-                    console.log('Update find, tryi to update end restart');
+                    console.log('Update find, try to update end restart');
+                    console.dir( update.summary.changes);
                     require('child_process').exec('npm restart');
                 }
             });
-        res.status(200).send( '2222 2 ____Update and restart update ___222' );
+        res.status(200).send( '333 2 ____Update and restart update ___33333' );
     });
 
     //app.use('/crops', session.isAuthenticatedUser, cropsRouter);
