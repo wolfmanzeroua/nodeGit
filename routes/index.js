@@ -30,7 +30,7 @@ module.exports = function(app, db){
                     require('child_process').exec('npm restart');
                 }
             });
-        res.status(200).send( 'Update and restart' );
+        res.status(200).send( '2222 2 ____Update and restart update ___222' );
     });
 
     //app.use('/crops', session.isAuthenticatedUser, cropsRouter);
