@@ -26,6 +26,7 @@ module.exports = function(app, db){
         require('simple-git')()
             .pull(function(err, update) {
                 if(update && update.summary.changes) {
+                    console.log('Update find, tryi to update end restart');
                     require('child_process').exec('npm restart');
                 }
             });
