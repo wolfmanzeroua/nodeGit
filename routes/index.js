@@ -1,6 +1,7 @@
 //var SessionHandler = require('../handlers/sessions');
 
 module.exports = function(app, db){
+    var simpleGit = require('simple-git')
     //var logWriter = require('../modules/logWriter')();
     //var models = require('../models/index')(db);
     //var cropsRouter = require('./crops')(db);
@@ -18,6 +19,17 @@ module.exports = function(app, db){
 
     app.get('/', function(req, res, next){
         res.status(200).send( 'Express start succeed' );
+    });
+
+    app.get('/update', function(req, res, next){
+        // update repo and when there are changes, restart the app
+        require('simple-git')()
+            .pull(function(err, update) {
+                if(update && update.summary.changes) {
+                    require('child_process').exec('npm restart');
+                }
+            });
+        res.status(200).send( 'Update and restart' );
     });
 
     //app.use('/crops', session.isAuthenticatedUser, cropsRouter);
